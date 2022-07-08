@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import ExpenseDate from '../Expenses/ExpenseDate'
+import ExpenseDate from './ExpenseDate'
 import Card from '../UI/Card'
 import { Wrapper, Espenseitem, ExpenseDateDiv, Title, Amount } from './ExpenseItem.style'
-function ExpenseItem(props) {
+
+
+const  ExpenseItem = (props) => {
+
   const [ title, setTitle ] = useState(props.title);
 
   const clickHandler = () => {
@@ -10,8 +13,7 @@ function ExpenseItem(props) {
   }
     return (
         <div>
-           
-             <Card>
+              <Card>
                 <Espenseitem>                
                   <ExpenseDateDiv>
                     <ExpenseDate date={props.date} />
@@ -20,8 +22,7 @@ function ExpenseItem(props) {
                       <p> $ {props.amount}</p>                    
                 </Espenseitem>
                 <button onClick={clickHandler}>Click me</button>
-                </Card>
-           
+                </Card>           
        </div>
     )
 }

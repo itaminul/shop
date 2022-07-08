@@ -1,6 +1,6 @@
 import { CardArea } from './Card.style'
 
-function Card(props) {
+const Card = (props) => {
     return <div>
         <CardArea>
         {props.children}
