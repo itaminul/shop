@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FormContainer, FormContainerTitle, FormContainerAmount, FormContainerDate, FormContainerSubmitButton } from './ExpenseForm.style';
-const ExpenseFrom = () => {
+
+const ExpenseFrom = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -42,12 +43,15 @@ const ExpenseFrom = () => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        const expenseDate = {
+        const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
-        console.log(expenseDate);
+       props.onSaveExpenseData(expenseData);
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
     }
 
     return (
@@ -56,15 +60,24 @@ const ExpenseFrom = () => {
             <FormContainer>
                 <FormContainerTitle>
                 <label htmlFor="">Title</label>
-                <input type="text" onClick={titleChangeHandler} />
+                <input
+                 type="text"
+                 defaultValue={enteredTitle}
+                  onClick={titleChangeHandler} />
                 </FormContainerTitle>
                 <FormContainerAmount>
                 <label htmlFor="">Amount</label>
-                <input type="text" onClick={amountChangeHandler} />
+                <input
+                 type="text" 
+                 defaultValue={enteredAmount}
+                 onClick={amountChangeHandler} />
                 </FormContainerAmount>
                 <FormContainerDate>
                 <label htmlFor="">Date</label>
-                <input type="text" onClick={dateChangeHandler} />
+                <input
+                 type="date"
+                 defaultValue={enteredDate}
+                  onClick={dateChangeHandler} />
                 </FormContainerDate>
                 <div>
                 <button type='submit' >Save</button>

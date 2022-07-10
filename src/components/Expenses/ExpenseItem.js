@@ -6,11 +6,6 @@ import { Wrapper, Espenseitem, ExpenseDateDiv, Title, Amount } from './ExpenseIt
 
 const  ExpenseItem = (props) => {
 
-  const [ title, setTitle ] = useState(props.title);
-
-  const clickHandler = () => {
-    setTitle('updated')
-  }
     return (
         <div>
               <Card>
@@ -18,10 +13,10 @@ const  ExpenseItem = (props) => {
                   <ExpenseDateDiv>
                     <ExpenseDate date={props.date} />
                   </ExpenseDateDiv>
-                      <p>{title} </p>
+                      <p>{props.title} </p>
                       <p> $ {props.amount}</p>                    
                 </Espenseitem>
-                <button onClick={clickHandler}>Click me</button>
+              
                 </Card>           
        </div>
     )
